@@ -1,0 +1,56 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section id="presentacion" class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
+      Presentación
+    </h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+      <!-- Avatar -->
+      <div class="flex justify-center">
+        <img
+          src={`${base}avatar.png`}
+          alt="Avatar"
+          class="w-64 h-64 object-cover rounded-full shadow-lg"
+        />
+      </div>
+
+      <!-- Video -->
+      <div>
+        <video
+          controls
+          class="w-full rounded-lg shadow-lg"
+        >
+          <source
+            src={`${base}presentacion.mp4`}
+            type="video/mp4"
+          />
+
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+
+    </div>
+
+    <!-- Texto de presentación -->
+    <div class="max-w-3xl mx-auto mt-10 text-center">
+
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        Sobre mí
+      </h2>
+
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+        Hola, soy Julian López, estudiante de Ingeniería de Sistemas.
+        Este es mi portafolio personal, donde presento algunos de mis
+        proyectos, habilidades y evidencias de mi proceso de aprendizaje.
+      </p>
+
+    </div>
+
+  </div>
+</section>

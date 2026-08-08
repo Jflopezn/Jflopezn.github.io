@@ -1,40 +1,36 @@
 /**
  * Site Configuration
  *
- * Customize this file to personalize your blog.
+ * Customize this file to personalize your portfolio.
  */
 
 export const SITE_CONFIG = {
   // Basic site information
-  title: "My Blog",
-  description: "A modern blog built with Astro",
-  author: "amirdaraee",
-  email: "amirdaraee@gmail.com",
+  title: "Julian López",
+  description: "Portfolio personal de Julian López",
+  author: "Julian López",
+  email: "tu-correo@gmail.com",
 
   // Social media links
-  // Remove or leave empty any platforms you don't use
+  // Escribe solamente tu usuario, no la URL completa.
   socialLinks: {
-    github: "amirdaraee",
-    twitter: "amirdaraee",
-    linkedin: "amirdaraee",
-    youtube: "", // Leave empty if not used
+    github: "TU_USUARIO_GITHUB",
+    twitter: "",
+    linkedin: "TU_USUARIO_LINKEDIN",
+    youtube: "",
   },
 
   // Analytics
-  // Add your Google Analytics tracking ID
-  // Leave empty to disable analytics
   googleAnalyticsId: "",
 
   // Locale settings
-  language: "en",
-  locale: "en-US",
+  language: "es",
+  locale: "es-CO",
 
-  // Site URL (used for canonical URLs and SEO)
-  // Update this with your production URL
-  siteUrl: "https://amirdaraee.github.io/astro-pulsar",
+  // Site URL
+  siteUrl: "https://TU_USUARIO.github.io/TU_REPOSITORIO",
 
   // Default meta image for social sharing
-  // Place your image in the public folder
   defaultOgImage: "/stock/default-og-image.jpg",
 
   // Posts per page for blog pagination
@@ -45,7 +41,7 @@ export const SITE_CONFIG = {
     darkMode: true,
     analytics: true,
     sitemap: true,
-  }
+  },
 };
 
 // Author information for structured data
@@ -53,15 +49,16 @@ export const AUTHOR_INFO = {
   name: SITE_CONFIG.author,
   email: SITE_CONFIG.email,
   url: SITE_CONFIG.siteUrl,
-  // You can add more structured data here
-  jobTitle: "Developer", // Optional
-  organization: "", // Optional
+  jobTitle: "Systems Engineering Student",
+  organization: "",
 };
 
 // Navigation menu items
 export const NAV_ITEMS = [
   { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
+  { href: "/#presentacion", label: "Presentación" },
+  { href: "/#evidencias", label: "Evidencias" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];

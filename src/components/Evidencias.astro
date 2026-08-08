@@ -1,0 +1,72 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const evidencias = [
+  {
+    titulo: "Evidencia 1",
+    imagen: "evidencia1.png",
+    descripcion:
+      "Descripción de la primera evidencia. Aquí puedes explicar qué representa, qué aprendiste y qué herramientas utilizaste.",
+  },
+  {
+    titulo: "Evidencia 2",
+    imagen: "evidencia2.png",
+    descripcion:
+      "Descripción de la segunda evidencia. Aquí puedes explicar el trabajo realizado y los resultados obtenidos.",
+  },
+  {
+    titulo: "Evidencia 3",
+    imagen: "evidencia3.png",
+    descripcion:
+      "Descripción de la tercera evidencia. Aquí puedes explicar qué demuestra esta evidencia dentro de tu proceso.",
+  },
+];
+---
+
+<section
+  id="evidencias"
+  class="py-16 bg-gray-50 dark:bg-gray-800"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <h2
+      class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12"
+    >
+      Evidencias
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      {evidencias.map((evidencia) => (
+        <article
+          class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden"
+        >
+
+          <img
+            src={`${base}${evidencia.imagen}`}
+            alt={evidencia.titulo}
+            class="w-full h-56 object-cover"
+            loading="lazy"
+          />
+
+          <div class="p-6">
+
+            <h3
+              class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3"
+            >
+              {evidencia.titulo}
+            </h3>
+
+            <p class="text-gray-700 dark:text-gray-300">
+              {evidencia.descripcion}
+            </p>
+
+          </div>
+
+        </article>
+      ))}
+
+    </div>
+
+  </div>
+</section>
