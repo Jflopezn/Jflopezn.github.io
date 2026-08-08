@@ -28,7 +28,8 @@ jobs:
           # package-manager: pnpm@latest # El gestor de paquetes de Node que debería usarse para instalar dependencias y construir tu sitio. Detectado automáticamente basado en tu lockfile. (opcional)
           # build-cmd: pnpm run build # El comando para compilar tu sitio. Por defecto ejecuta el script/tarea build del paquete. (opcional)
         # env:
-          # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Usa comillas simples para el valor de la variable. (opcional)
+          #  PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Usa comillas simples para el valor de la variable. (opcional)
+        
 
   deploy:
     needs: build
