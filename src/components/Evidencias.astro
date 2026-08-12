@@ -2,71 +2,174 @@
 const base = import.meta.env.BASE_URL;
 
 const evidencias = [
-  {
-    titulo: "MER Streaming",
-    imagen: "MER_Streaming.png",
-    descripcion:
-      "Proximamente...",
-  },
-  {
-    titulo: "Evidencia 2",
-    imagen: "evidencia2.png",
-    descripcion:
-      "Modelo entidad relacion para la plataforma de Streaming que desea lanzar la Universidad El Bosque",
-  },
-  {
-    titulo: "Evidencia 3",
-    imagen: "evidencia3.png",
-    descripcion:
-      "Proximamente...",
-  },
+    {
+        titulo: "Modelo Entidad Relacion Streaming",
+        imagen: "MER_Streaming.png",
+        descripcion: "Imagen del modelo entidad relacion creado en base en el ejercicio de la plataforma de Streaming de la Universidad El Bosque",
+    },
+    {
+        titulo: "Evidencia 2",
+        imagen: "evidencia2.png",
+        descripcion: "Proximamente...",
+    },
+    {
+        titulo: "Evidencia 3",
+        imagen: "evidencia3.png",
+        descripcion: "Proximamente...",
+    },
 ];
 ---
 
 <section
-  id="evidencias"
-  class="py-16 bg-gray-50 dark:bg-gray-800"
+    id="evidencias"
+    class="py-16 bg-gray-50 dark:bg-gray-800"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <h2
-      class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12"
-    >
-      Evidencias
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      {evidencias.map((evidencia) => (
-        <article
-          class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden"
+        <h2
+            class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12"
         >
+            Evidencias
+        </h2>
 
-          <img
-            src={`${base}${evidencia.imagen}`}
-            alt={evidencia.titulo}
-            class="w-full h-56 object-cover"
-            loading="lazy"
-          />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <div class="p-6">
+            {evidencias.map((evidencia) => (
+                <article
+                    class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden flex flex-col"
+                >
 
-            <h3
-              class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3"
-            >
-              {evidencia.titulo}
-            </h3>
+                    <div
+                        class="w-full h-80 bg-gray-100 dark:bg-gray-600 flex items-center justify-center overflow-hidden"
+                    >
+                        <img
+                            src={`${base}${evidencia.imagen}`}
+                            alt={evidencia.titulo}
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
 
-            <p class="text-gray-700 dark:text-gray-300">
-              {evidencia.descripcion}
-            </p>
+                    <div class="p-6 flex flex-col flex-grow">
 
-          </div>
+                        <h3
+                            class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3"
+                        >
+                            {evidencia.titulo}
+                        </h3>
 
-        </article>
-      ))}
+                        <p
+                            class="text-gray-600 dark:text-gray-300 mb-6 flex-grow"
+                        >
+                            {evidencia.descripcion}
+                        </p>
+
+                        <button
+                            type="button"
+                            class="ver-evidencia w-full px-5 py-3 rounded-lg bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 font-semibold hover:opacity-80 transition-opacity"
+                            data-imagen={`${base}${evidencia.imagen}`}
+                            data-titulo={evidencia.titulo}
+                        >
+                            Ver evidencia
+                        </button>
+
+                    </div>
+                </article>
+            ))}
+
+        </div>
+    </div>
+</section>
+
+
+<div
+    id="modal-evidencia"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+    aria-hidden="true"
+>
+
+    <div
+        class="relative w-full max-w-6xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden"
+    >
+
+        <button
+            id="cerrar-modal"
+            type="button"
+            class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/70 text-white text-2xl flex items-center justify-center hover:bg-black transition-colors"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+        <div
+            class="w-full max-h-[90vh] flex items-center justify-center p-4"
+        >
+            <img
+                id="imagen-modal"
+                src=""
+                alt=""
+                class="max-w-full max-h-[80vh] object-contain"
+            />
+        </div>
 
     </div>
+</div>
 
-  </div>
-</section>
+
+<script>
+    const modal = document.getElementById("modal-evidencia");
+    const imagenModal = document.getElementById("imagen-modal");
+    const cerrarModal = document.getElementById("cerrar-modal");
+
+    const botones = document.querySelectorAll(".ver-evidencia");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            const imagen = boton.getAttribute("data-imagen");
+            const titulo = boton.getAttribute("data-titulo");
+
+            if (!imagen || !modal || !imagenModal) {
+                return;
+            }
+
+            imagenModal.src = imagen;
+            imagenModal.alt = titulo || "Evidencia";
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+            modal.setAttribute("aria-hidden", "false");
+
+            document.body.style.overflow = "hidden";
+        });
+    });
+
+    function cerrarEvidencia() {
+        if (!modal || !imagenModal) {
+            return;
+        }
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        modal.setAttribute("aria-hidden", "true");
+
+        imagenModal.src = "";
+        imagenModal.alt = "";
+
+        document.body.style.overflow = "";
+    }
+
+    cerrarModal?.addEventListener("click", cerrarEvidencia);
+
+    modal?.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            cerrarEvidencia();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            cerrarEvidencia();
+        }
+    });
+</script>
