@@ -117,7 +117,9 @@ const evidencias = [
 
 <script>
     const modal = document.getElementById("modal-evidencia");
-    const imagenModal = document.getElementById("imagen-modal");
+    const imagenModal = document.getElementById(
+    "imagen-modal"
+    ) as HTMLImageElement | null;
     const cerrarModal = document.getElementById("cerrar-modal");
 
     const botones = document.querySelectorAll(".ver-evidencia");
