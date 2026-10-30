@@ -141,4 +141,21 @@ export const evidencias: Evidencia[] = [
             "Detección de información faltante en un esquema y planteamiento de supuestos para poder resolver una consulta."
         ]
     },
+        {
+        slug: "consultas-sql-esquema-hr",
+        titulo: "Consultas SQL: Esquema HR de Oracle",
+        imagen: "Consultas_sql.png",
+        imagenAlt: "Consulta SQL ejecutada sobre el esquema HR de Oracle con su resultado",
+        categoria: "Bases de datos",
+        descripcion: "Hoja de trabajo de consultas SQL sobre el esquema HR de Oracle, con joins, agrupaciones, funciones de agregación, expresiones CASE y subconsultas correlacionadas.",
+        contexto: "El ejercicio se trabajó sobre el esquema de ejemplo HR de Oracle. Este esquema relaciona empleados, departamentos, cargos, historial laboral y la ubicación geográfica de cada departamento, que llega hasta el país y la región. A partir de él se pidieron consultas de dificultad creciente, desde listar empleados con su continente hasta un reto que combina varias condiciones sobre el departamento de cada empleado.",
+        desarrollo: "Las primeras consultas recorren la cadena de tablas empleado, departamento, ubicación, país y región mediante joins. Cuando el enunciado pide todos los empleados se usa LEFT JOIN, para no perder a quienes no tienen departamento asignado. Se usó una autorrelación de la tabla de empleados para mostrar a cada uno junto a su manager. Con GROUP BY y HAVING se contaron empleados por país, y con FETCH FIRST WITH TIES se obtuvieron los cinco departamentos con mayor suma de salarios, respetando los empates. También se aplicaron funciones de agregación como SUM, MAX, MIN y STDDEV, el operador LIKE para buscar patrones en el nombre y una expresión CASE para clasificar salarios por rangos. Por último, las subconsultas correlacionadas permitieron comparar a cada empleado con el promedio, el salario máximo y la fecha de contratación más antigua de su propio departamento. En el reto se usó NOT EXISTS para descartar a quienes tienen subordinados.",
+        aprendizajes: [
+            "Diferencia entre JOIN y LEFT JOIN, y cuándo usar cada uno según lo que pide el enunciado.",
+            "Uso de autorrelaciones para consultar jerarquías dentro de una misma tabla.",
+            "Agrupación de resultados con GROUP BY y filtrado de grupos con HAVING.",
+            "Uso de funciones de agregación, expresiones CASE y búsqueda de patrones con LIKE.",
+            "Construcción de subconsultas correlacionadas y uso de NOT EXISTS para combinar varias condiciones."
+        ]
+    },
 ];
