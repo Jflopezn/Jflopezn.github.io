@@ -38,7 +38,7 @@ export const evidencias: Evidencia[] = [
         desarrollo: "La actividad plantea la necesidad de desarrollar un modelo conceptual de base de datos para administrar el préstamo de equipos audiovisuales de una universidad. A partir de las reglas de negocio, se deben representar tanto las características de cada referencia y sus unidades físicas como la información de los usuarios, los préstamos y las relaciones de reemplazo entre equipos.",
         aprendizajes: [
             "Identificación de entidades, atributos y relaciones a partir de reglas de negocio.",
-            "Comprensión de entidades débiles y claves compuestas para identificar unidades dependientes de una referencia."
+            "Comprensión de entidades débiles y claves compuestas para identificar unidades dependientes de una referencia.",
             "Representación de relaciones recursivas entre entidades de un mismo tipo."
         ]
     },
