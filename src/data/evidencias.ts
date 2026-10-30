@@ -108,4 +108,20 @@ export const evidencias: Evidencia[] = [
             "Evaluación del equilibrio entre normalización y rendimiento con datos de uso reales."
         ]
     },
+        {
+        slug: "normalizacion-caso-ordenes",
+        titulo: "Normalización: Caso órdenes de compra",
+        imagen: "Normalizacion_Ordenes.png",
+        imagenAlt: "Diagrama de dependencias funcionales, pasos de normalización y tablas finales del caso órdenes de compra",
+        categoria: "Bases de datos",
+        descripcion: "Normalización de una tabla de órdenes de compra hasta la tercera forma normal, identificando sus dependencias funcionales y aplicando cada regla paso a paso.",
+        contexto: "El ejercicio parte de una tabla que registra en un solo lugar las órdenes de compra, los clientes que las realizan y los artículos que incluye cada una, con su cantidad y precio. Como una orden contiene varios artículos, los datos de la orden y del cliente se repiten en varias filas, y los datos de un artículo se repiten en cada orden donde aparece.",
+        desarrollo: "Primero se definió la clave de la tabla como la combinación del número de orden y el número de artículo. Luego se clasificaron las dependencias funcionales. La cantidad depende de la clave completa. La fecha y el cliente dependen solo de la orden, y el nombre y el precio del artículo dependen solo del artículo, por lo que ambas son parciales. Los datos del cliente son transitivos, porque llegan a la orden a través de su identificador. Con eso se aplicaron las reglas en orden. En 1FN se separó el grupo repetido de artículos en una tabla que incluye la clave de la orden. En 2FN se creó la tabla de artículos para eliminar la dependencia parcial. En 3FN se creó la tabla de clientes para eliminar la dependencia transitiva. El resultado son cuatro tablas, Órdenes, Clientes, Artículos y Artículos_Órdenes, relacionadas mediante claves foráneas y sin datos repetidos.",
+        aprendizajes: [
+            "Identificación de grupos repetidos y su eliminación para cumplir la primera forma normal.",
+            "Clasificación de dependencias funcionales en completas, parciales y transitivas.",
+            "Aplicación de las reglas de 2FN y 3FN creando tablas nuevas con las claves de las que dependen los atributos.",
+            "Verificación del resultado con datos reales para comprobar que la información ya no se repite."
+        ]
+    },
 ];
