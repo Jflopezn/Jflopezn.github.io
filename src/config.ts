@@ -63,8 +63,5 @@ export const NAV_ITEMS = [
   {
     label: "EVIDENCIAS",
     href: "/evidencias"
-  },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
+  }
 ];
