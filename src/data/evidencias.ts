@@ -74,4 +74,21 @@ export const evidencias: Evidencia[] = [
             "Preparación del modelo entidad-relación para su paso al modelo relacional."
         ]
     },
+    {
+        slug: "reduccion-tablas-terminal-portuaria",
+        titulo: "Reducción a tablas y modelo relacional: Terminal Portuaria Bahía Verde",
+        imagen: "relacional_portuaria.png",
+        imagenAlt: "Modelo relacional de la Terminal Portuaria Bahía Verde generado en Oracle Data Modeler",
+        categoria: "Bases de datos",
+        descripcion: "Transformación de un modelo entidad-relación extendido, con entidades débiles, relaciones ternarias y recursivas, agregación y especialización, hasta obtener el modelo relacional en Oracle Data Modeler.",
+        contexto: "El caso parte de un modelo conceptual ya validado para una terminal portuaria. Este modelo registra los servicios marítimos y sus recaladas, los buques y sus certificados, los importadores y su carga, las cuadrillas de operarios, el abastecimiento de suministros por parte de contratistas y el almacenamiento de la carga en bodegas. El objetivo no era rediseñar el modelo, sino transformarlo aplicando las reglas de reducción a tablas.",
+        desarrollo: "En la primera fase se simplificaron los atributos. El nombre del importador se separó en nombres y apellidos. Los correos del importador, las sedes del contratista y los equipos del estibador, que son multivaluados, pasaron a entidades débiles propias. Las antigüedades se eliminaron por ser derivadas, ya que pueden calcularse con las fechas que sí se conservan. En la segunda fase se transformaron las relaciones. Embarque, Cuadrilla y Supervisión, que eran relaciones M:N, se convirtieron en entidades intermedias. Cada una conserva sus atributos y tiene una clave formada por las claves de las entidades que une. La relación ternaria Abastece se reemplazó por la entidad Abastecimiento, identificada por contratista, recalada y suministro. La agregación Deposita quedó apoyada sobre Embarque, que se relaciona con Bodega. La recursiva Transborda, al ser 1:N, se resolvió con una clave foránea de Recalada hacia sí misma. La especialización de Operario se transformó con una tabla por subtipo y sin restricción de exclusividad, porque la jerarquía es parcial y solapada. Finalmente, el modelo se construyó en Oracle Data Modeler. Allí se marcaron las relaciones identificadoras y se ajustaron cardinalidades y participaciones. Luego se generó el modelo relacional con sus claves primarias y foráneas.",
+        aprendizajes: [
+            "Transformación de atributos compuestos, multivaluados y derivados antes de pasar a tablas.",
+            "Conversión de relaciones M:N, ternarias y recursivas, y definición de las claves de las entidades resultantes.",
+            "Uso de relaciones identificadoras para que las entidades débiles hereden la clave de sus entidades dueñas.",
+            "Transformación de agregaciones y de jerarquías de especialización parciales y solapadas.",
+            "Construcción del modelo lógico en Oracle Data Modeler y revisión de la ubicación de las claves foráneas en el modelo relacional."
+        ]
+    },
 ];
