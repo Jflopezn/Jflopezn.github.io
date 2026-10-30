@@ -58,5 +58,20 @@ export const evidencias: Evidencia[] = [
             "Representación de especializaciones parciales y solapadas.",
             "Identificación de errores de transformación y evaluación de su impacto en la integridad de los datos."
         ]
-    }
+    },
+    {
+        slug: "reduccion-a-tablas-libreria",
+        titulo: "Reducción a tablas: Caso librería en línea",
+        imagen: "Ejercicio1_reducciont.drawio.png",
+        imagenAlt: "Modelo entidad-relación reducido del caso librería en línea",
+        categoria: "Bases de datos",
+        descripcion: "Aplicación de las reglas de reducción a tablas sobre el modelo entidad-relación de una librería en línea, como paso previo al modelo relacional.",
+        contexto: "Se partió de un modelo entidad-relación de una librería que vende libros por internet. El modelo registra autores, editores, clientes, cestas de compra y almacenes, y la mayoría de sus relaciones eran de muchos a muchos (M:N).",
+        desarrollo: "Primero se revisó que el modelo no tuviera atributos multivaluados, compuestos ni derivados. Luego, cada relación M:N se transformó en una entidad débil intermedia: Autoría, Edición, Detalle_Cesta, Inventario y Cesta_Cliente. Cada una quedó unida a sus entidades fuertes mediante dos relaciones 1:N. Por último, las relaciones se nombraron con verbos en infinitivo y se definieron las claves de cada entidad, de modo que el modelo quedó listo para pasar a tablas.",
+        aprendizajes: [
+            "Transformación de relaciones M:N en entidades intermedias con dos relaciones 1:N.",
+            "Identificación de entidades débiles y de su dependencia de las entidades fuertes.",
+            "Preparación del modelo entidad-relación para su paso al modelo relacional."
+        ]
+    },
 ];
