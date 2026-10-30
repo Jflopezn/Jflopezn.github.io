@@ -124,4 +124,21 @@ export const evidencias: Evidencia[] = [
             "Verificación del resultado con datos reales para comprobar que la información ya no se repite."
         ]
     },
+        {
+        slug: "algebra-relacional-empleados-universidades",
+        titulo: "Álgebra relacional: Empleados y universidades",
+        imagen: "Algebra_Relacional.png",
+        imagenAlt: "Esquema de relaciones y expresiones de álgebra relacional para ocho consultas sobre empleados y universidades",
+        categoria: "Bases de datos",
+        descripcion: "Diseño de expresiones de álgebra relacional para resolver ocho consultas sobre empleados, universidades y jefes, usando selección, proyección, join, renombramiento, diferencia, producto cartesiano y división.",
+        contexto: "El ejercicio plantea un esquema con empleados, las universidades en las que trabajan con su sueldo mensual, y sus jefes. A partir de él se pidieron consultas de dificultad creciente: desde buscar los empleados de una universidad hasta encontrar a quienes ganan más que todos los empleados de otra, o las universidades presentes en todas las ciudades donde está la Universidad Nacional.",
+        desarrollo: "Para las consultas básicas se combinaron la selección, para filtrar por universidad o sueldo, la proyección y el join natural. Hubo que cuidar que empleado y universidad comparten el atributo ciudad, así que se proyectó universidad antes de unir. Así se evitó que el join igualara las ciudades sin querer, salvo en la consulta donde esa igualdad era justamente la condición. Para comparar la dirección del empleado con la de su jefe se usó el renombramiento. También se dejó explícita una relación entre empleado y jefe que el esquema no incluía. Las consultas con negación se resolvieron con diferencia de conjuntos sobre los códigos. La consulta de ganar más que cualquier empleado se resolvió con producto cartesiano y diferencia, buscando primero a quienes no cumplen la condición. Por último, la consulta de las universidades presentes en todas las ciudades de la Universidad Nacional se resolvió con la operación de división.",
+        aprendizajes: [
+            "Uso combinado de selección, proyección y join natural para responder consultas sobre varias relaciones.",
+            "Identificación de atributos con el mismo nombre que alteran el resultado de un join natural.",
+            "Aplicación del renombramiento para comparar atributos de dos relaciones distintas.",
+            "Resolución de consultas con negación y de tipo 'todos' mediante diferencia de conjuntos y división.",
+            "Detección de información faltante en un esquema y planteamiento de supuestos para poder resolver una consulta."
+        ]
+    },
 ];
