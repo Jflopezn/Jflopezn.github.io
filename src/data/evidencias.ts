@@ -91,4 +91,21 @@ export const evidencias: Evidencia[] = [
             "Construcción del modelo lógico en Oracle Data Modeler y revisión de la ubicación de las claves foráneas en el modelo relacional."
         ]
     },
+        {
+        slug: "normalizacion-caso-hospitalizacion",
+        titulo: "Normalización: Caso hospitalización",
+        imagen: "Normalizacion_Hospitalizacion.png",
+        imagenAlt: "Diagrama de dependencias funcionales del esquema de hospitalización y tablas resultantes de la normalización",
+        categoria: "Bases de datos",
+        descripcion: "Análisis y normalización de un esquema de hospitalización: dependencias funcionales, anomalías, paso a 2FN y 3FN, y evaluación de FNBC.",
+        contexto: "El taller presentó una tabla única con la que un hospital registra a sus pacientes hospitalizados, junto con la cama, el ala, la especialidad y los datos del médico tratante. La tabla mezcla información de varias entidades y repite datos en cada hospitalización, lo que la hace propensa a inconsistencias.",
+        desarrollo: "Primero se definió la clave como la combinación del paciente y su fecha de ingreso, ya que un paciente puede hospitalizarse varias veces. Luego se identificaron las dependencias funcionales: una completa, una parcial (el nombre del paciente) y dos transitivas (el ala a través de la cama y el contacto del médico a través del médico). También se justificó por qué la especialidad no determina el ala. Con eso se concluyó que el esquema estaba en 1FN y se describieron sus anomalías de inserción, actualización y eliminación. En la normalización, el primer paso separó la tabla PACIENTE para llegar a 2FN. El segundo separó las tablas CAMA y MÉDICO para llegar a 3FN, dejando en HOSPITALIZACIÓN las claves foráneas correspondientes. Al final se verificó que todo determinante es clave candidata, por lo que el esquema también cumple FNBC. Con base en el volumen de operaciones del contexto, se argumentó por qué no conviene desnormalizar.",
+        aprendizajes: [
+            "Definición de la clave de un esquema a partir de las reglas del negocio.",
+            "Identificación de dependencias funcionales completas, parciales y transitivas, y descarte de las que no se cumplen.",
+            "Normalización paso a paso hasta 3FN, indicando claves primarias y foráneas.",
+            "Verificación de FNBC revisando que todo determinante sea clave candidata.",
+            "Evaluación del equilibrio entre normalización y rendimiento con datos de uso reales."
+        ]
+    },
 ];
