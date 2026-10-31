@@ -158,4 +158,20 @@ export const evidencias: Evidencia[] = [
             "Construcción de subconsultas correlacionadas y uso de NOT EXISTS para combinar varias condiciones."
         ]
     },
+        {
+        slug: "documento-identidad-como-clave-primaria",
+        titulo: "Investigación: ¿Por qué no usar el documento de identidad como clave primaria?",
+        imagen: "Clave_Primaria_Documento.png",
+        imagenAlt: "Cualidades de una buena clave primaria, ejemplo del problema de usar el documento de identidad y diseño recomendado",
+        categoria: "Bases de datos (Investigación tema)",
+        descripcion: "Tema de investigación sobre la elección de claves primarias para identificar personas y los problemas de usar un documento de identidad para ese fin.",
+        contexto: "A partir de una lectura sobre diseño de bases de datos relacionales, investigué qué hace buena a una clave primaria y por qué identificar personas con un número de documento, aunque parezca la opción natural, puede traer problemas. El tema complementa lo visto en clase sobre claves candidatas, claves primarias e integridad de entidad. Fuente: Harrington, J. L. Relational Database Design and Implementation.",
+        desarrollo: "La lectura parte de una idea clave: para recuperar cualquier dato de una base relacional basta con conocer la tabla, la columna y la clave primaria de la fila. Por eso la clave debe ser única y nunca nula, una restricción que se conoce como integridad de entidad. El documento de identidad parece cumplir con eso, pero falla en la práctica. Una persona puede no tener documento al momento de registrarse, como un estudiante extranjero recién llegado, y el número puede cambiar con el tiempo. En Colombia, por ejemplo, muchas personas tuvieron un número en la tarjeta de identidad y otro distinto en la cédula. Además, un mismo número puede repetirse entre distintos tipos de documento. El libro describe un caso real en el que un estudiante recibió un número temporal y, cuando obtuvo el definitivo, sus notas quedaron repartidas entre los dos. Al revisar su historial, el sistema indicaba que le faltaba un semestre completo. A esto se suma el riesgo de seguridad: guardar documentos como clave expone información sensible y facilita la suplantación de identidad, algo que en Colombia regula la Ley 1581 de 2012 de protección de datos personales. La alternativa es usar una clave sin significado generada por el sistema, como un código de estudiante, y guardar el documento como un atributo más, con una restricción de unicidad sobre el tipo y el número.",
+        aprendizajes: [
+            "Una buena clave primaria debe ser única, nunca nula, inmutable y no exponer datos sensibles.",
+            "Un identificador que parece natural, como el documento de identidad, puede fallar por casos que el diseño no anticipó.",
+            "Cambiar el valor de una clave primaria obliga a corregir todas las filas que la referencian, con riesgo de dejar datos inconsistentes.",
+            "Las claves generadas por el sistema permiten conservar el documento como dato y garantizar su unicidad con una restricción UNIQUE."
+        ]
+    },
 ];
