@@ -174,4 +174,21 @@ export const evidencias: Evidencia[] = [
             "Las claves generadas por el sistema permiten conservar el documento como dato y garantizar su unicidad con una restricción UNIQUE."
         ]
     },
+        {
+        slug: "vistas-bases-de-datos",
+        titulo: "Investigación: Vistas en bases de datos relacionales",
+        imagen: "Vistas.png",
+        imagenAlt: "Diagrama de cómo funciona una vista, sus ventajas y un ejemplo en SQL sobre el esquema HR",
+        categoria: "Bases de datos (Investigación tema)",
+        descripcion: "Tema de investigación sobre las vistas: qué son, cómo funcionan, por qué conviene usarlas y qué limitaciones tienen, con un ejemplo aplicado al esquema HR de Oracle.",
+        contexto: "Para complementar lo trabajado en clase con consultas SQL, investigué el mecanismo de las vistas a partir del libro Relational Database Design and Implementation de Jan L. Harrington. El objetivo era entender cómo una base de datos puede ofrecer distintas formas de ver la misma información sin duplicarla.",
+        desarrollo: "Una vista es una consulta guardada con un nombre. No almacena datos: cada vez que se usa, el motor ejecuta su consulta sobre las tablas base. Por eso su información siempre está actualizada y se le llama tabla virtual. Una vista puede reunir datos de varias tablas y mostrar solo algunas filas y columnas. Además, crearla o eliminarla no afecta a las tablas base. El libro plantea tres razones para usarlas. La primera es la seguridad, porque se puede dar acceso a la vista sin dar acceso a las tablas completas. La segunda es la simplicidad, porque los usuarios sin conocimientos técnicos consultan una sola tabla sin conocer los joins que hay detrás. La tercera es la reutilización de consultas complejas que se usan con frecuencia. También tienen límites. Muchas vistas solo sirven para consultar, especialmente las que usan joins o agrupaciones. Además, eliminar una vista afecta a los programas y a las otras vistas que dependen de ella. Como complemento, revisé las vistas materializadas, que sí guardan el resultado para ganar velocidad a cambio de tener que refrescarlo. Para aplicarlo, creé una vista sobre el esquema HR que reúne a cada empleado con su departamento y su país. Luego la consulté como si fuera una tabla y le otorgué permisos de lectura a un usuario.",
+        aprendizajes: [
+            "Una vista guarda la consulta y no los datos, por lo que siempre muestra información actualizada.",
+            "Las vistas sirven para restringir el acceso a la información, simplificar el esquema para los usuarios y reutilizar consultas complejas.",
+            "No todas las vistas permiten modificar datos, y eliminar una puede afectar a programas y a otras vistas.",
+            "Las vistas materializadas son una alternativa cuando el rendimiento importa más que tener los datos al instante.",
+            "Aplicación de CREATE VIEW y GRANT sobre un esquema real."
+        ]
+    },
 ];
