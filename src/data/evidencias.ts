@@ -92,6 +92,23 @@ export const evidencias: Evidencia[] = [
         ]
     },
         {
+        slug: "modelo-logico-terminal-portuaria",
+        titulo: "Modelo lógico en Oracle Data Modeler: Terminal Portuaria Bahía Verde",
+        imagen: "Modelo_Logico_taller_reduccion.png",
+        imagenAlt: "Modelo lógico de la Terminal Portuaria Bahía Verde en notación Barker, construido en Oracle Data Modeler",
+        categoria: "Bases de datos",
+        descripcion: "Construcción del modelo lógico de la Terminal Portuaria Bahía Verde en Oracle Data Modeler, a partir del modelo entidad-relación ya simplificado con las reglas de reducción a tablas.",
+        contexto: "Esta evidencia es el paso intermedio del taller de reducción a tablas de la terminal portuaria. Después de aplicar las reglas de reducción sobre el modelo conceptual en notación de Chen, el modelo se llevó a Oracle Data Modeler. Allí se representa como modelo lógico, que es el punto de partida para generar el modelo relacional con sus tablas y claves. El objetivo era aprender a usar la herramienta y a leer y construir un modelo en la notación que esta utiliza.",
+        desarrollo: "El modelo se construyó en notación Barker, la que usa Oracle Data Modeler. En esta notación cada entidad se dibuja como un rectángulo redondeado con sus atributos. El símbolo # marca los atributos que forman el identificador, el asterisco indica que un atributo es obligatorio y la o indica que es opcional. En las relaciones, la pata de gallo señala el lado 'muchos'. La línea continua indica participación obligatoria y la punteada, participación opcional. Primero se crearon las entidades fuertes del caso: Servicio, Recalada, Buque, Certificado, Importador, Bodega, Operario, Contratista y Suministro. Luego se incluyeron como entidades las estructuras que surgieron de la reducción. Correo, Sede y Equipo_Estibador provienen de atributos multivaluados. Embarque, Cuadrilla y Supervisión reemplazan relaciones de muchos a muchos y conservan sus atributos propios. Abastecimiento reemplaza la relación ternaria entre contratista, recalada y suministro. La especialización de Operario se representó dibujando a Estibador y Gruero dentro del supertipo, que es la forma en que la herramienta modela los subtipos. Por último, se definieron las relaciones entre entidades con su cardinalidad y su participación, como preparación para generar el modelo relacional.",
+        aprendizajes: [
+            "Uso de Oracle Data Modeler para construir un modelo lógico.",
+            "Lectura e interpretación de la notación Barker: identificadores, atributos obligatorios y opcionales, cardinalidad y participación.",
+            "Representación en la herramienta de las entidades que resultan de la reducción a tablas: multivaluados, relaciones M:N y relaciones ternarias.",
+            "Modelado de supertipos y subtipos en Oracle Data Modeler.",
+            "Comprensión del modelo lógico como paso intermedio entre el modelo conceptual y el modelo relacional."
+        ]
+    },
+        {
         slug: "normalizacion-caso-hospitalizacion",
         titulo: "Normalización: Caso hospitalización",
         imagen: "Normalizacion_Hospitalizacion.png",
