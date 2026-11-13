@@ -14,7 +14,7 @@ export const SITE_CONFIG = {
   // Social media links
   // Escribe solamente tu usuario, no la URL completa.
   socialLinks: {
-    github: "TU_USUARIO_GITHUB",
+    github: "Jflopezn",
     twitter: "",
     linkedin: "TU_USUARIO_LINKEDIN",
     youtube: "",
