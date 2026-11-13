@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   title: "Julian López",
   description: "Portfolio personal de Julian López",
   author: "Julian López",
-  email: "tu-correo@gmail.com",
+  email: "jflopezn@unbosque.edu.co",
 
   // Social media links
   // Escribe solamente tu usuario, no la URL completa.
@@ -28,7 +28,7 @@ export const SITE_CONFIG = {
   locale: "es-CO",
 
   // Site URL
-  siteUrl: "https://TU_USUARIO.github.io/TU_REPOSITORIO",
+  siteUrl: "https://github.com/Jflopezn/Jflopezn.github.io",
 
   // Default meta image for social sharing
   defaultOgImage: "/stock/default-og-image.jpg",

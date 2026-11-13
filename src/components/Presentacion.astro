@@ -1,56 +1,228 @@
 ---
+import { evidencias } from "../data/evidencias";
+
 const base = import.meta.env.BASE_URL;
+
+const totalEvidencias = evidencias.length;
+const totalInvestigacion = evidencias.filter((e) =>
+    e.categoria.toLowerCase().includes("investigación")
+).length;
+const totalPracticas = totalEvidencias - totalInvestigacion;
+const ultimas = evidencias.slice(-3).reverse();
+
+const temas = [
+    {
+        icono: "fa-sitemap",
+        titulo: "Modelo entidad-relación",
+        texto: "Identificación de entidades, atributos, relaciones y cardinalidades a partir de reglas de negocio.",
+    },
+    {
+        icono: "fa-table",
+        titulo: "Reducción a tablas",
+        texto: "Paso del MER y el MER extendido al modelo relacional: entidades débiles, ternarias, agregación y jerarquías.",
+    },
+    {
+        icono: "fa-object-group",
+        titulo: "Modelo lógico y relacional",
+        texto: "Construcción de modelos en Oracle Data Modeler con claves primarias y foráneas.",
+    },
+    {
+        icono: "fa-filter",
+        titulo: "Normalización",
+        texto: "Dependencias funcionales, anomalías y descomposición hasta 3FN y FNBC.",
+    },
+    {
+        icono: "fa-code-fork",
+        titulo: "Álgebra relacional",
+        texto: "Selección, proyección, joins, diferencia y división para expresar consultas.",
+    },
+    {
+        icono: "fa-database",
+        titulo: "SQL y transacciones",
+        texto: "Consultas con joins, agregación, subconsultas, CTE, funciones analíticas y control ACID.",
+    },
+];
+
+const herramientas = ["Draw.io", "Oracle Data Modeler", "Oracle SQL Developer", "SQL", "Git y GitHub"];
+
+const intereses = [
+    { icono: "fa-database", titulo: "Datos y bases de datos" },
+    { icono: "fa-magic", titulo: "Inteligencia artificial y LLMs" },
+    { icono: "fa-cloud", titulo: "Cloud y DevOps" },
+    { icono: "fa-shield", titulo: "Ciberseguridad" },
+];
 ---
 
-<section id="presentacion" class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="presentacion" class="scroll-mt-20">
 
-    <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
-      Presentación
-    </h1>
+    <!-- Encabezado -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <p class="text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-4">
+                    Ingeniería de Sistemas · Universidad El Bosque
+                </p>
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4">
+                    Julian López
+                </h1>
+                <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">
+                    E-portafolio de <span class="font-semibold text-gray-900 dark:text-gray-100">Bases de Datos 1</span>
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
+                    Soy estudiante de Ingeniería de Sistemas. En este portafolio reúno los ejercicios, talleres,
+                    modelos y temas de investigación que desarrollé durante el semestre, con el contexto de cada
+                    actividad, el proceso que seguí y lo que aprendí en ella.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a
+                        href={`${base}evidencias`}
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                        <i class="fa fa-folder-open" aria-hidden="true"></i>
+                        Ver evidencias
+                    </a>
+                    <a
+                        href="#video"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        Video de presentación
+                    </a>
+                </div>
+            </div>
 
-      <!-- Avatar -->
-      <div class="flex justify-center">
-        <img
-          src={`${base}avatar.png`}
-          alt="Avatar"
-          class="w-64 h-64 object-cover rounded-full shadow-lg"
-        />
-      </div>
+            <div class="flex justify-center order-1 lg:order-2">
+                <img
+                    src={`${base}avatar.png`}
+                    alt="Foto de Julian López"
+                    class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-full shadow-xl ring-4 ring-blue-500/30"
+                />
+            </div>
 
-      <!-- Video -->
-      <div>
-        <video
-          controls
-          class="w-full rounded-lg shadow-lg"
-        >
-          <source
-            src={`${base}presentacion.mp4`}
-            type="video/mp4"
-          />
+        </div>
 
-          Tu navegador no soporta la reproducción de video.
-        </video>
-      </div>
-
+        <!-- Cifras -->
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/60 p-5 text-center">
+                <dt class="text-sm text-gray-600 dark:text-gray-400">Evidencias</dt>
+                <dd class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-1">{totalEvidencias}</dd>
+            </div>
+            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/60 p-5 text-center">
+                <dt class="text-sm text-gray-600 dark:text-gray-400">Ejercicios y talleres</dt>
+                <dd class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-1">{totalPracticas}</dd>
+            </div>
+            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/60 p-5 text-center">
+                <dt class="text-sm text-gray-600 dark:text-gray-400">Temas de investigación</dt>
+                <dd class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-1">{totalInvestigacion}</dd>
+            </div>
+            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/60 p-5 text-center">
+                <dt class="text-sm text-gray-600 dark:text-gray-400">Temas del curso</dt>
+                <dd class="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-1">{temas.length}</dd>
+            </div>
+        </dl>
     </div>
 
-    <!-- Texto de presentación -->
-    <div class="max-w-3xl mx-auto mt-10 text-center">
-
-      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        Sobre mí
-      </h2>
-
-      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-        Hola, soy Julian López, estudiante de Ingeniería de Sistemas.
-        Este es mi portafolio personal, donde presento algunos de mis
-        proyectos, habilidades y evidencias de mi proceso de aprendizaje.
-      </p>
-
+    <!-- Video -->
+    <div id="video" class="scroll-mt-20 bg-gray-50 dark:bg-gray-800/40 border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 items-center">
+                <video
+                    controls
+                    preload="metadata"
+                    class="w-full max-w-xs mx-auto aspect-[9/16] object-cover bg-black rounded-xl shadow-lg"
+                >
+                    <source src={`${base}presentacion.mp4`} type="video/mp4" />
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Video de presentación</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        En este video me presento y cuento cómo está organizado el portafolio y qué
+                        espero aprender en la asignatura.
+                    </p>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Herramientas utilizadas</h3>
+                    <ul class="flex flex-wrap gap-2">
+                        {herramientas.map((h) => (
+                            <li class="px-3 py-1.5 rounded-full text-sm bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
+                                {h}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-  </div>
+    <!-- Temas -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Temas trabajados</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
+            Los contenidos de la asignatura que se reflejan en las evidencias.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {temas.map((t) => (
+                <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:border-blue-500 dark:hover:border-blue-400 transition-colors">
+                    <div class="w-11 h-11 rounded-lg bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg mb-4">
+                        <i class={`fa ${t.icono}`} aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{t.titulo}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{t.texto}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <!-- Últimas evidencias -->
+    <div class="bg-gray-50 dark:bg-gray-800/40 border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Últimas evidencias</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">Lo más reciente que agregué al portafolio.</p>
+                </div>
+                <a href={`${base}evidencias`} class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                    Ver todas →
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {ultimas.map((e) => (
+                    <a
+                        href={`${base}evidencias/${e.slug}/`}
+                        class="group flex flex-col rounded-xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
+                    >
+                        <div class="h-44 bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+                            <img
+                                src={`${base}${e.imagen}`}
+                                alt={e.imagenAlt}
+                                loading="lazy"
+                                class="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+                            />
+                        </div>
+                        <div class="p-5">
+                            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">{e.categoria}</span>
+                            <h3 class="mt-1 font-semibold text-gray-900 dark:text-gray-100 leading-snug">{e.titulo}</h3>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <!-- Intereses -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Áreas de interés</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-10">
+            Hacia donde quiero orientar mi formación profesional.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {intereses.map((i) => (
+                <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 flex items-center gap-3">
+                    <i class={`fa ${i.icono} text-xl text-blue-600 dark:text-blue-400`} aria-hidden="true"></i>
+                    <span class="font-medium text-gray-900 dark:text-gray-100">{i.titulo}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+
 </section>
