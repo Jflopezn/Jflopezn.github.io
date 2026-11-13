@@ -208,14 +208,14 @@ export const evidencias: Evidencia[] = [
             "Aplicación de CREATE VIEW y GRANT sobre un esquema real."
         ]
     },
-        {
+         {
         slug: "origen-acid-harder-reuter",
         titulo: "Investigación: ¿De dónde viene el término ACID?",
         imagen: "Origen_ACID.png",
         imagenAlt: "Propiedades ACID, tipos de fallo y acciones de recuperación, políticas STEAL y FORCE, y su relación con Oracle, según Härder y Reuter (1983)",
         categoria: "Bases de datos (Investigación tema)",
         descripcion: "Tema de investigación sobre el artículo que acuñó el término ACID y sobre cómo una base de datos se recupera de un fallo sin perder ni corromper la información.",
-        contexto: "En el taller de SQL avanzado justifiqué cómo mi solución cumplía las propiedades ACID. Para entender de dónde salen esas propiedades, investigué el artículo original: Härder, T. y Reuter, A. (1983), Principles of Transaction-Oriented Database Recovery, ACM Computing Surveys, 15(4), 287–317. El objetivo era comprender no solo qué significa cada propiedad, sino qué hace el motor por dentro para garantizarlas.",
+        contexto: "En clase vimos que las transacciones deben cumplir las propiedades ACID. Para entender de dónde salen esas propiedades, investigué el artículo original: Härder, T. y Reuter, A. (1983), Principles of Transaction-Oriented Database Recovery, ACM Computing Surveys, 15(4), 287–317. El objetivo era comprender no solo qué significa cada propiedad, sino qué hace el motor por dentro para garantizarlas.",
         desarrollo: "El artículo propone un marco de términos para describir y comparar las técnicas de recuperación de los sistemas de bases de datos. Para eso parte de la transacción: una secuencia de operaciones que debe ejecutarse como una unidad. De ahí salen las cuatro propiedades que los autores agrupan bajo el acrónimo ACID: atomicidad, consistencia, aislamiento y durabilidad. Luego distinguen tres tipos de fallo, cada uno con su propia acción de recuperación. Si falla una transacción, basta con deshacer sus cambios (Transaction UNDO). Si falla el sistema y se pierde la memoria, hay que deshacer las transacciones incompletas y rehacer las confirmadas que no alcanzaron a llegar al disco (Global UNDO y Partial REDO). Si se daña el disco, se rehace todo a partir de una copia de archivo y del log (Global REDO). Después clasifican las técnicas según cómo se maneja el buffer. Con la política STEAL, una página modificada puede escribirse en disco antes del COMMIT, por lo que se necesita información para deshacer (UNDO). Con NO FORCE, los cambios confirmados no se escriben en disco de inmediato, por lo que se necesita información para rehacer (REDO). Los motores actuales combinan STEAL y NO FORCE porque es lo más eficiente, a cambio de mantener ambos tipos de log. Por último, relacioné estas ideas con Oracle: los segmentos UNDO permiten el ROLLBACK y que otras sesiones lean la versión confirmada de los datos, y los redo logs, que se escriben antes de confirmar el COMMIT, son los que garantizan la durabilidad.",
         aprendizajes: [
             "El término ACID nació en un artículo sobre recuperación ante fallos, no solo sobre transacciones.",
